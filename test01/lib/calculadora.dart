@@ -58,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculadora Básica'),
+        backgroundColor: Colors.pink,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

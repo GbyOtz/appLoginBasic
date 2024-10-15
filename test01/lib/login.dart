@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; //importamos una libreria fundamental para desarrollar con flutter
 import 'calculadora.dart';//importamos el otro archivo para visualizar despues de iniciar sesion
+import 'formulario.dart';
 
 class LoginPage extends StatefulWidget {//creamos la clase LoginPage
   @override
@@ -20,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {//aqui se define la logica que s
     if (usuario == defaultUsuario && contra == defaultContra) {
       Navigator.push(//este es un metodo de busqueda en flutter que redirigira a la calculadora
         context,
-        MaterialPageRoute(builder: (context) => MyApp()),//crear una nueva ruta y muestra la calculadora
+        MaterialPageRoute(builder: (context) => Formulario()),//crear una nueva ruta y muestra la calculadora
       );
     } else {//si las credenciales estan mal se muestra un modal que señala el error
       showDialog(
@@ -46,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {//aqui se define la logica que s
     return Scaffold(//este metodo brinda una estructura basica 
       appBar: AppBar(
         title: Text('Login'),
+        backgroundColor: Colors.pink,
       ),
       body: Padding(//se detalla como sera el cuerpo de la aplicacion, es similar a realizar un css
         padding: EdgeInsets.all(16.0),
@@ -62,10 +64,28 @@ class _LoginPageState extends State<LoginPage> {//aqui se define la logica que s
               obscureText: true,
             ),
             SizedBox(height: 20),
-            ElevatedButton(
-              child: Text('Iniciar sesión'),
-              onPressed: _login,
+
+            OutlinedButton(
+                onPressed: _login,
+                child: const Text(
+                  'Iniciar Sesion',
+                  style: TextStyle(fontSize: 20),
+                ),
             ),
+             
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=> MyApp()),
+                  );
+                },
+                child: const Text(
+                  'Calculadora',
+                  style: TextStyle(fontSize: 20),
+                ),
+            ),
+
           ],
         ),
       ),
